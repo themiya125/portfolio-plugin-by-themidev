@@ -146,6 +146,6 @@ use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 $updateChecker = PucFactory::buildUpdateChecker(
     'https://github.com/themiya125/portfolio-plugin-by-themidev',
     __FILE__,
-    'themidev-theme-builder'
+    'portfolio-plugin-by-themidev'
 );
 $updateChecker->setBranch('main');
