@@ -1,0 +1,379 @@
+:root {
+    --fp-primary: #3b82f6;
+    --fp-primary-dark: #2563eb;
+    --fp-text-light: #ffffff;
+    --fp-text-dark: #1e293b;
+    --fp-overlay-bg: rgba(15, 23, 42, 0.7);
+    --fp-transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --fp-border-radius: 1rem;
+    --fp-gap: 1.5rem;
+}
+
+.fp-wrapper {
+    max-width: 1200px;
+    margin: auto;
+    padding: 2rem auto;
+    padding: 0 1rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Grid Layout - Desktop: 2 columns */
+.fp-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--fp-gap);
+    margin-bottom: 2rem;
+}
+
+/* Card Styles */
+.fp-card {
+    width: calc(50% - (var(--fp-gap) / 2));
+    position: relative;
+    border-radius: var(--fp-border-radius);
+    overflow: hidden;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.2);
+    transition: transform var(--fp-transition), box-shadow var(--fp-transition);
+    aspect-ratio: 16 / 9;
+}
+
+.fp-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
+}
+
+.fp-card.fp-hidden {
+    display: none;
+}
+
+/* Card Image */
+.fp-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    transition: transform 0.5s ease;
+}
+
+.fp-card:hover .fp-image {
+    transform: scale(1.05);
+}
+
+/* Overlay - Always visible */
+.fp-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.2) 0%,
+        var(--fp-overlay-bg) 100%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    transition: background var(--fp-transition);
+}
+
+.fp-card:hover .fp-overlay {
+    background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.3) 0%,
+        rgba(15, 23, 42, 0.85) 100%
+    );
+}
+
+/* Content - Always visible and centered */
+.fp-content {
+    text-align: center;
+    color: var(--fp-text-light);
+    max-width: 90%;
+    transform: translateY(0);
+    transition: transform var(--fp-transition);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.fp-title {
+    font-size: 1.5rem;
+    color: #fff !important;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+    line-height: 1.3;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.fp-desc {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0 0 1rem;
+    opacity: 0.9;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Read More Button - Desktop hover only */
+.fp-readmore {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--color_two) !important;
+    color: var(--color_five);
+    padding: 0.6rem 1.2rem;
+    border-radius: 2rem;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all var(--fp-transition);
+    box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+    margin: 0 auto;
+        margin-top: 20px;
+}
+
+.fp-card:hover .fp-readmore {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fp-readmore:hover {
+    background: var(--fp-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(59, 130, 246, 0.4);
+}
+
+.fp-arrow {
+    transition: transform 0.2s ease;
+}
+
+.fp-readmore:hover .fp-arrow {
+    transform: translateX(4px);
+}
+
+/* Tech Tags */
+.fp-tech-tags {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    z-index: 5;
+}
+
+.fp-tech-tag {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(4px);
+    padding: 0.25rem 0.75rem;
+    border-radius: 2rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--fp-text-dark);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Load More Section */
+.fp-loadmore-wrap {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.fp-loadmore-btn {
+    background: transparent;
+    border: 2px solid var(--color_two);
+    color: var(--color_two);
+    padding: 0.9rem 2.5rem;
+    border-radius: 3rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--fp-transition);
+    position: relative;
+    overflow: hidden;
+    min-width: 220px;
+}
+
+.fp-loadmore-btn:hover {
+    background: var(--color_two);
+    color: var(--color_five);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.4);
+}
+
+.fp-loader {
+    display: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid currentColor;
+    border-top-color: transparent;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    margin-left: -10px;
+    top: 50%;
+    margin-top: -10px;
+}
+
+.fp-loadmore-btn.loading .fp-btn-text {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.fp-loadmore-btn.loading .fp-loader {
+    display: block;
+    animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Counter */
+.fp-counter {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+.fp-counter span {
+    font-weight: 600;
+    color: var(--color_two);
+}
+
+/* Mobile Styles - Single column with centered content */
+@media (max-width: 768px) {
+    .fp-card {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+    }
+    
+    .fp-overlay {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+        background: linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.2) 0%,
+            rgba(15, 23, 42, 0.8) 100%
+        );
+    }
+    
+    .fp-content {
+        text-align: center;
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        bottom: auto;
+        left: auto;
+        right: auto;
+        transform: none;
+    }
+    
+    .fp-title {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+        text-align: center;
+    }
+    
+    .fp-desc {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        text-align: center;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    /* Mobile: Read More always visible and centered */
+    .fp-readmore {
+        opacity: 1;
+        transform: none;
+        position: relative;
+        bottom: auto;
+        right: auto;
+        margin: 0.5rem auto 0;
+        background: var(--color_two);
+        color: var(--color_five);
+        padding: 0.7rem 1.5rem;
+        font-size: 0.9rem;
+        border: none;
+        box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+    }
+    
+    .fp-readmore:hover {
+        background: var(--fp-primary-dark);
+        transform: translateY(-2px);
+    }
+    
+    .fp-tech-tags {
+        top: 0.75rem;
+        left: 0.75rem;
+    }
+    
+    .fp-card:hover .fp-image {
+        transform: none;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .fp-overlay {
+        padding: 1rem;
+    }
+    
+    .fp-title {
+        font-size: 1.2rem;
+        margin-bottom: 0.3rem;
+    }
+    
+    .fp-desc {
+        font-size: 0.85rem;
+        margin-bottom: 0.75rem;
+        max-width: 100%;
+    }
+    
+    .fp-readmore {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+        margin-top: 0.25rem;
+    }
+    
+    .fp-loadmore-btn {
+        width: 100%;
+        padding: 0.8rem 1rem;
+        min-width: auto;
+    }
+    
+    .fp-tech-tag {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.6rem;
+    }
+}
+
+/* Animation for new cards */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fp-card:not(.fp-hidden) {
+    animation: fadeInUp 0.5s ease forwards;
+}

@@ -1,0 +1,7 @@
+{
+  "apiVersion": 2,
+  "name": "themidev/portfolio-grid",
+  "title": "Portfolio Grid",
+  "category": "widgets",
+  "editorScript": "file:./index.js"
+}
